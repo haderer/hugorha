@@ -5,6 +5,8 @@ menu:
         weight: 30
         pre: '<i class="fa fa-linux" aria-hidden="true"></i>'
 subnav: "false"
+tags:
+  - demo
 description: "Licence apaache 2"
 ---
 Copyright 2017 ITK

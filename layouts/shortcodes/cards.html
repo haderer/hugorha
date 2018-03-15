@@ -1,0 +1,34 @@
+
+{{$tags := split (.Get "tags") ","}}
+
+<div class="cards">
+
+{{range $page := .Site.RegularPages}}
+<!--li><a href="{{.Permalink}}">{{.Title}}</a></li-->
+
+
+	{{ if gt ( len (intersect $page.Params.tags $tags)) 0 }}
+	
+		<div class="card" style="flex: {{ $page.Params.card.flex | default "0 1 auto"}}; " >
+			<div class="front">
+				    {{ if $page.Params.card.icon }}
+						<img class="logo" src='{{ $page.Params.card.icon }}'/>
+				    {{ end }}
+      				<span class='title'>{{ $page.Title }}</span>
+      				<hr>
+      				<span class='bottom'></span>
+			</div>
+			<div class="back">
+				{{ $page.Description }}
+				Made by {{ $page.Lastmod}} with love
+				<p>{{.GitInfo}}</p>
+				<p>{{$page.Lastmod}}</p>
+
+			</div>			
+		</div>
+
+	{{ end }}
+
+{{end}}
+
+</div>

@@ -9,6 +9,7 @@ homepage = "http://siteforthistheme.com/"
 tags = []
 features = []
 min_version = "0.19"
+enableGitInfo = "true"
 
 [author]
   name = ""

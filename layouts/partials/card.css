@@ -1,0 +1,96 @@
+
+.cards {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-content: center;
+}
+
+.card {
+    position: relative;
+    margin: 20px;
+    width: 220px;
+    height: 260px;
+    opacity: 0.95;
+}
+
+.card .big {
+	flex: 1;
+}
+
+.front,
+.back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+    -webkit-transition: -webkit-transform 300ms;
+    transition: -webkit-transform 300ms;
+    transition: transform 300ms;
+    transition: transform 300ms, -webkit-transform 300ms;
+    -webkit-transition-timing-function: linear;
+            transition-timing-function: linear;
+    border-radius: 5px;
+    color: {{.Param "css.textColorOnMainColor"}};
+}
+.front {
+    transform: rotateY(0deg);
+    background: -webkit-linear-gradient(top left, {{ .Param "css.gradient_2"}}, {{ .Param "css.gradient_1"}});
+    background: linear-gradient(to bottom right,  {{.Param "css.gradient_2"}},  {{ .Param "css.gradient_1"}});
+    text-align: center;
+    padding: 10px;
+    
+}
+.back {
+    background: -webkit-linear-gradient(top left, {{ .Param "css.gradient_1"}}, {{ .Param "css.gradient_2"}});
+    background: linear-gradient(to bottom right, {{ .Param "css.gradient_1"}}, {{ .Param "css.gradient_2"}});
+    -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+    padding: 10px;
+}
+.card:hover .front {
+    -webkit-transform: rotateY(-180deg);
+            transform: rotateY(-180deg);
+}
+.card:hover .back {
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+}
+
+
+.card .front .logo {
+    height: 120px;
+    width: 120px;
+    border: 5px solid white;
+    border-radius: 50%;
+    background: {{ .Param "css.bgColor"}};
+    display: inline-block;
+    margin-bottom: 10px;
+}
+.card .front .title {
+    display: inline-block;
+    font-size: 18px;
+}
+.card .front .bottom {
+    font-size: 12px;
+    font-weight: lighter;
+    text-transform: uppercase;
+}
+.card .front hr {
+    border: none;
+    color: #B2DBBF;
+    border: 1px solid;
+}
+.card .back .icon {
+    fill: currentColor;
+    color: inherit;
+    height: 33px;
+    width: 33px;
+    margin-top: 15px;
+    color: white;
+}
+.card .back .icon:hover {
+    cursor: pointer;
+    color: #648767;
+}
