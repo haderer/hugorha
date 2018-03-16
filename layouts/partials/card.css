@@ -14,10 +14,6 @@
     opacity: 0.95;
 }
 
-.card .big {
-	flex: 1;
-}
-
 .front,
 .back {
     width: 100%;
@@ -36,15 +32,15 @@
 }
 .front {
     transform: rotateY(0deg);
-    background: -webkit-linear-gradient(top left, {{ .Param "css.gradient_2"}}, {{ .Param "css.gradient_1"}});
-    background: linear-gradient(to bottom right,  {{.Param "css.gradient_2"}},  {{ .Param "css.gradient_1"}});
+    background: -webkit-linear-gradient(top left, {{ .Param "css.mainColor"}}, {{ .Param "css.mainColor"}});
+    background: linear-gradient(to bottom right,  {{.Param "css.mainColor"}},  {{ .Param "css.mainColor"}});
     text-align: center;
     padding: 10px;
     
 }
 .back {
-    background: -webkit-linear-gradient(top left, {{ .Param "css.gradient_1"}}, {{ .Param "css.gradient_2"}});
-    background: linear-gradient(to bottom right, {{ .Param "css.gradient_1"}}, {{ .Param "css.gradient_2"}});
+    background: -webkit-linear-gradient(top left, {{ .Param "css.mainColor"}}, {{ .Param "css.mainColor"}});
+    background: linear-gradient(to bottom right, {{ .Param "css.mainColor"}}, {{ .Param "css.mainColor"}});
     -webkit-transform: rotateY(180deg);
             transform: rotateY(180deg);
     padding: 10px;
@@ -60,35 +56,77 @@
 
 
 .card .front .logo {
-    height: 120px;
-    width: 120px;
-    border: 5px solid white;
+    height: 125px;
+    width: 125px;
+    border: 5px solid {{ .Param "css.bgColor"  }};
     border-radius: 50%;
     background: {{ .Param "css.bgColor"}};
-    display: inline-block;
     margin-bottom: 10px;
+    max-height: 300px;
 }
 .card .front .title {
-    display: inline-block;
-    font-size: 18px;
+    display: block;
+    font-size: 20px;
 }
-.card .front .bottom {
-    font-size: 12px;
+
+.card .front p {
+    height: 10%;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+
+.card .title.big {
+    display: block;
+    font-size: 30px;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+}
+
+.card .bottom {
+	display: block;
+    font-size: 10px;
     font-weight: lighter;
     text-transform: uppercase;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
 }
-.card .front hr {
+
+.card > hr {
     border: none;
     color: #B2DBBF;
     border: 1px solid;
 }
-.card .back .icon {
-    fill: currentColor;
-    color: inherit;
-    height: 33px;
-    width: 33px;
-    margin-top: 15px;
-    color: white;
+
+.card .back a {
+	display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+	height: 80%;
+	width: 100%;
+	margin: 5px;
+    vertical-align: middle;
+	text-decoration: none;
+	color: {{.Param "css.textColorOnMainColor"}};
+	text-align: center;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.card .back .tags {
+	position: red;
+	width: 100%;
+	font-weight: lighter;
+	text-align: center;
+}
+.card .back p {
+	height: 60%;
+	text-align: center;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 .card .back .icon:hover {
     cursor: pointer;

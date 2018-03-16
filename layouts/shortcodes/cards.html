@@ -9,21 +9,44 @@
 
 	{{ if gt ( len (intersect $page.Params.tags $tags)) 0 }}
 	
-		<div class="card" style="flex: {{ $page.Params.card.flex | default "0 1 auto"}}; " >
+		    {{ if $page.Params.card.flex }}
+		    <div class="card" style="flex: {{ $page.Params.card.flex | default "0 1 auto"}}; ">
+		    {{ else if $page.Params.card.icon }}
+		    <div class="card" style="flex: 0 0 300px; ">
+		    {{ else }}
+		    <div class="card">
+		    {{ end }}
 			<div class="front">
 				    {{ if $page.Params.card.icon }}
 						<img class="logo" src='{{ $page.Params.card.icon }}'/>
-				    {{ end }}
-      				<span class='title'>{{ $page.Title }}</span>
+						<span class='title'>{{ $page.Title }}</span>
+				    {{ else }}
+      				<span class='title big'>{{ $page.Title }}</span>
+      				{{ end }}
       				<hr>
-      				<span class='bottom'></span>
+      				<p>
+      					{{ $page.Description }}
+      				</p>
+      				<span class='bottom'>
+      					Last updated: {{ $page.Lastmod.Format "January 2, 2006" }}
+      				</span>
 			</div>
 			<div class="back">
-				{{ $page.Description }}
-				Made by {{ $page.Lastmod}} with love
-				<p>{{.GitInfo}}</p>
-				<p>{{$page.Lastmod}}</p>
 
+				<a href="{{ $page.Permalink }}">
+					{{ if $page.Description }} 
+						{{ $page.Description }}
+					{{ else }}
+						{{ $page.Title }}
+					{{ end }}
+				</a>
+					
+				
+				<div class="tags"> Tags: {{ range $page.Params.tags}}{{.}} {{end}} </div>
+				<div class='bottom'>
+      					By Haderer Nicolas
+      			</div>
+				
 			</div>			
 		</div>
 
